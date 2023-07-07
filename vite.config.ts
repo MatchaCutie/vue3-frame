@@ -15,6 +15,8 @@ export default defineConfig({
     vueJsx(),
     // 全局自动导入
     AutoImport({
+      // import * from vue可省略
+      imports: ['vue'],
       resolvers: [ElementPlusResolver()]
     }),
     Components({

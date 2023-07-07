@@ -28,3 +28,7 @@ coverage
 *.sw?
 
 package-lock.json
+
+# Ignore auto-imports file
+auto-imports.d.ts
+components.d.ts

@@ -1,4 +1,3 @@
-import { ref } from 'vue'
 import PDictData from './dictData'
 import dictDatas from './dicts'
 
