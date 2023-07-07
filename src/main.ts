@@ -8,7 +8,12 @@ import router from './router'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 
+import { useDict, useStaticDict } from '@/utils/dict'
+
 const app = createApp(App)
+
+app.config.globalProperties.$useDict = useDict
+app.config.globalProperties.$useStaticDict = useStaticDict
 
 app.use(createPinia())
 app.use(router)
