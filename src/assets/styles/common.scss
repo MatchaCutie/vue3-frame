@@ -1,0 +1,27 @@
+body {
+    background: linear-gradient(115.45deg, #ECF2FA 55.21%, #FAEDF1 100%);
+    
+    .word-ellipsis-1 {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .word-ellipsis-2 {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        word-break: break-word;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .word-ellipsis-3 {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        word-break: break-word;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
