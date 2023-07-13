@@ -4,6 +4,7 @@ import type { InterceptorsConfig } from './interceptorsConfig'
 import type { RequestOptions } from '#/axios'
 import { PAxios } from './axios'
 import errorCode from '@/utils/requests/errorCode'
+import { getToken } from '@/utils/auth'
 
 import deepMerge from 'deepmerge'
 
@@ -21,8 +22,8 @@ const interceptorsConfig: InterceptorsConfig = {
   },
   // 默认请求拦截
   requestInterceptors: (config: AxiosRequestConfig, options: CreateAxiosOptions) => {
-    if (options.requestOptions?.withToken) {
-      // TODO 添加token
+    if (options.requestOptions?.withToken && getToken()) {
+      config.headers['Authorization'] = getToken()
     }
 
     // 禁止重复请求
