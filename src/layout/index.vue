@@ -1,16 +1,17 @@
 <template>
+  <!-- <div :class="classObj" class="app-wrapper"></div> -->
   <div>layout</div>
   <router-view />
 </template>
 
 <script setup lang="ts">
-import { reactive, ref, onMounted, watch } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+// import { reactive, ref, onMounted, watch } from 'vue'
+// import { useRoute, useRouter } from 'vue-router'
 
-const router = useRouter()
-const route = useRoute()
+// const router = useRouter()
+// const route = useRoute()
 
-onMounted(() => {})
+// onMounted(() => {})
 </script>
 
 <style scoped></style>

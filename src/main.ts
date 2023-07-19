@@ -9,7 +9,7 @@ import '@/router/permission'
 // 引入element-plus
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
-
+import 'virtual:svg-icons-register'
 import { useDict, useStaticDict } from '@/utils/dict'
 
 const app = createApp(App)
