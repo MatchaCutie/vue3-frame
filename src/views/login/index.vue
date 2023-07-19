@@ -67,11 +67,13 @@
 </template>
 
 <script setup lang="ts">
-import { removeToken, setToken } from '@/utils/auth'
+import { removeToken } from '@/utils/auth'
 import { reactive, ref } from 'vue'
-import { login, getCodeImg, getInfo } from '@/api/user/login'
+import { getCodeImg } from '@/api/user/login'
 import { useRouter } from 'vue-router'
-import { userStore } from '@/stores/user'
+import useStore from '@/stores'
+// import { userStore } from '../../stores/user'
+const { user }: any = useStore()
 const router = useRouter()
 
 const user_form = ref()
@@ -92,7 +94,7 @@ const rules = reactive({
 const showPassword = ref(false)
 const codeUrl = ref('')
 
-removeToken()
+user.logout()
 
 // 获取图形验证码
 const handleGetImgCode = () => {
@@ -107,19 +109,20 @@ const handleGetImgCode = () => {
 handleGetImgCode()
 
 // 所有的提交
+const loading = ref(false)
+let queryOb = { redirect: '', other: {} }
 const handleSubmit = () => {
   user_form.value.validate((valid) => {
     if (valid) {
-      login(loginData)
+      loading.value = true
+      user
+        .login(loginData)
         .then(async (res) => {
-          if (res.code === 200) {
-            setToken(res.data.token)
-            await getUserInfo()
-            router.replace('/index')
-          } else if (res.code === 500) {
-            if (['验证码错误', '验证码已失效'].includes(res.msg)) {
-              handleGetImgCode()
-            }
+          loading.value = false
+          router.push({ path: '/index', query: queryOb.other })
+          if (['验证码错误', '验证码已失效'].includes(res.msg)) {
+            loading.value = false
+            handleGetImgCode()
           }
         })
         .catch(() => {
@@ -129,15 +132,18 @@ const handleSubmit = () => {
   })
 }
 
-const getUserInfo = async () => {
-  const res = await getInfo()
-  if (res.code === 200) {
-    const user = userStore()
-    user.setUserInfo(res.data.user)
-    user.setRoles(res.data.roles)
-    user.setPermission(res.data.permissions)
-  }
-}
+// const getUserInfo = async () => {
+//   const res = await getInfo({})
+//   if (res.code === 200) {
+//     const user = userStore()
+//     user.setUserInfo(res.data.user)
+//     user.setRoles(res.data.roles)
+//     user.setPermission(res.data.permissions)
+//     setTimeout(() => {
+//       console.log('store', store.roles)
+//     }, 2000)
+//   }
+// }
 </script>
 
 <style lang="scss">

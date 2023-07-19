@@ -16,7 +16,9 @@
     "deepmerge": "4.3.1",
     "element-plus": "2.3.7",
     "js-cookie": "3.0.5",
+    "nprogress": "^0.2.0",
     "pinia": "2.1.3",
+    "pinia-plugin-persist": "^1.0.0",
     "vue": "3.3.4",
     "vue-router": "4.2.2"
   },
@@ -24,6 +26,7 @@
     "@rushstack/eslint-patch": "1.2.0",
     "@tsconfig/node18": "2.0.1",
     "@types/node": "18.16.17",
+    "@types/nprogress": "^0.2.0",
     "@vitejs/plugin-vue": "4.2.3",
     "@vitejs/plugin-vue-jsx": "3.0.1",
     "@vue/eslint-config-prettier": "7.1.0",
