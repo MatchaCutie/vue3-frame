@@ -1,8 +1,9 @@
 @import './base.scss';
 @import './common.scss';
 @import './element-plus.scss';
-@import './variable.scss';
+@import './variable.module.scss';
 @import './mixin.scss';
+@import './sidebar.scss';
 body {
   height: 100%;
   background-color: #f2f2f2;

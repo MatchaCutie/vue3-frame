@@ -8,12 +8,11 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 
-import path from 'path'
+import { resolve } from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    vue(),
     vueJsx(),
     // 全局自动导入
     AutoImport({
@@ -22,17 +21,19 @@ export default defineConfig({
     Components({
       resolvers: [ElementPlusResolver()]
     }),
+    //vue在前面自动导入会报错
+    vue(),
     createSvgIconsPlugin({
       // 指定需要缓存的图标文件夹
-      iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
+      iconDirs: [resolve(process.cwd(), 'src/assets/svg')],
       // 指定symbolId格式
       symbolId: 'icon-[dir]-[name]'
     })
   ],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src'), // 配置别名
-      '#': path.resolve(__dirname, 'types')
+      '@': resolve(__dirname, 'src'), // 配置别名
+      '#': resolve(__dirname, 'types')
     }
   },
   base: '/pipat/',

@@ -39,3 +39,20 @@ export interface TagsViewState {
   visitedViews: TagView[]
   cachedViews: string[]
 }
+interface DefaultSettings {
+  title: string
+  showSettings: boolean
+  tagsView: boolean
+  fixedHeader: boolean
+  sidebarLogo: boolean
+  errorLog: string
+}
+export const defaultSettings: DefaultSettings = {
+  title: 'lz-system-admin',
+  showSettings: true,
+  tagsView: true,
+  fixedHeader: false,
+  // 是否显示Logo
+  sidebarLogo: true,
+  errorLog: 'production'
+}

@@ -11,7 +11,7 @@
     "moduleResolution": "Node",
     "esModuleInterop": true,
     // 指定全局组件类型
-    "types": ["element-plus/global", "vite/client","pinia-plugin-persist"],
+    "types": ["element-plus/global", "vite/client","pinia-plugin-persist","vite-plugin-svg-icons/client"],
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"],

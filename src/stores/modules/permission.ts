@@ -12,9 +12,10 @@ export const filterAsyncRoutes = (routes: any[]): any[] => {
       if (route.component === 'Layout') {
         route.component = Layout
       } else {
-        route.component = route.component.endsWith('.vue')
-          ? modules[`../../views/${route.component}`]
-          : modules[`../../views/${route.component}.vue`]
+        route.component = modules[`../../views/${route.component}.vue`]
+        // route.component = route.component.endsWith('.vue')
+        //   ? modules[`../../views/${route.component}`]
+        //   : modules[`../../views/${route.component}.vue`]
       }
     }
     if (route.children != null && route.children && route.children.length) {
