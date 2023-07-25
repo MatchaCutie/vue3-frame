@@ -10,6 +10,7 @@ const userStore = defineStore('user', {
     return {
       token: '',
       name: '',
+      nickName: '',
       avatar: '',
       userInfo: {},
       roles: [],
@@ -26,6 +27,9 @@ const userStore = defineStore('user', {
     },
     setName(name) {
       this.name = name
+    },
+    setNickName(name) {
+      this.nickName = name
     },
     setAvatar(avatar) {
       this.avatar = avatar
@@ -77,6 +81,7 @@ const userStore = defineStore('user', {
           }
           this.setUserInfo(user)
           this.setName(user.userName)
+          this.setNickName(user.nickName)
           this.setAvatar(avatar)
           watermark.set(user.userName + ' ' + user.phonenumber.substr(7, 11))
         })
@@ -94,7 +99,6 @@ const userStore = defineStore('user', {
 
     // 退出系统
     logout() {
-      console.log(usePermissionStore, 'usePermissionStore')
       return new Promise((resolve) => {
         loginOut().then(() => {
           this.RESET_STATE()

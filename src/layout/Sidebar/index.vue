@@ -37,7 +37,6 @@ const { permission, setting, app } = useStore()
 
 const route = useRoute()
 const routes = computed(() => permission.routes)
-console.log('routes11', routes)
 const showLogo = computed(() => setting.sidebarLogo)
 const isCollapse = computed(() => !app.sidebar.opened)
 

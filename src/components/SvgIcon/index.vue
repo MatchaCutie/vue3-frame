@@ -31,7 +31,6 @@ const props = defineProps({
 })
 
 const symbolId = computed(() => `#${props.prefix}-${props.iconClass}`)
-console.log('symbolId', symbolId)
 const svgClass = computed(() => {
   if (props.iconClass) {
     return `svg-icon icon-${props.iconClass}`

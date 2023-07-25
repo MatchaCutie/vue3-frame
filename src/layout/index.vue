@@ -6,23 +6,35 @@
       @click="handleClickOutside"
     ></div>
     <Sidebar class="sidebar-container" />
+    <div class="main-container">
+      <div :class="{ 'fixed-header': fixedHeader }">
+        <Navbar />
+        <TagsView v-if="needTagsView" />
+      </div>
+      <AppMain />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed, watchEffect } from 'vue'
 import { useWindowSize } from '@vueuse/core'
-// import { AppMain, Navbar, TagsView } from './components/index'
+import AppMain from './components/AppMain.vue'
+import Navbar from './components/Navbar.vue'
+import TagsView from './components/TagsView/index.vue'
 import Sidebar from './Sidebar/index.vue'
 import useStore from '@/stores'
 
 const { width } = useWindowSize()
 const WIDTH = 992
 
-const { app } = useStore()
+const { app, setting } = useStore()
 
 const sidebar = computed(() => app.sidebar)
 const device = computed(() => app.device)
+const showSettings = computed(() => setting.showSettings)
+const needTagsView = computed(() => setting.tagsView)
+const fixedHeader = computed(() => setting.fixedHeader)
 
 const classObj = computed(() => ({
   hideSidebar: !sidebar.value.opened,

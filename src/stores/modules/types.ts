@@ -25,6 +25,7 @@ export interface SettingState {
 export interface UserState {
   token: string
   name: string
+  nickName: string
   avatar: string
   userInfo: object
   roles: string[]

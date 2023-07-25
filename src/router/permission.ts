@@ -32,7 +32,6 @@ router.beforeEach(async (to, from, next) => {
           temp.forEach((route: any) => {
             router.addRoute(route)
           })
-          console.log(router.getRoutes(), 'temp')
           next({ ...to, replace: true })
         } catch (error) {
           console.warn(error)
@@ -45,7 +44,6 @@ router.beforeEach(async (to, from, next) => {
       }
     }
   } else {
-    console.log('oooo')
     if (whiteList.indexOf(to.path) !== -1) {
       next()
     } else {

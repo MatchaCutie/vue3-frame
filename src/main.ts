@@ -21,9 +21,6 @@ const app = createApp(App)
 app.config.globalProperties.$useDict = useDict
 app.config.globalProperties.$useStaticDict = useStaticDict
 
-console.log('router', router)
-console.log(router.getRoutes())
-
 app.use(createPinia())
 app.use(router)
 app.use(ElementPlus)

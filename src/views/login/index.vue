@@ -67,7 +67,6 @@
 </template>
 
 <script setup lang="ts">
-import { removeToken } from '@/utils/auth'
 import { reactive, ref } from 'vue'
 import { getCodeImg } from '@/api/user/login'
 import { useRouter } from 'vue-router'
@@ -163,6 +162,9 @@ const handleSubmit = () => {
   right: 350px;
   background: #ffffff;
   border-radius: 6px;
+  .mb-9 {
+    margin-bottom: 32px;
+  }
   .title {
     margin: 0px auto 30px auto;
     text-align: center;

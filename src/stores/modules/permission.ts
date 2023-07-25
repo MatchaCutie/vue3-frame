@@ -41,7 +41,6 @@ const usePermissionStore = defineStore('permission', {
     generateRoutes(menuList: any[]) {
       return new Promise((resolve) => {
         const routes = filterAsyncRoutes(menuList)
-        console.log(routes, '-------routes')
 
         this.setRoutes(routes)
         resolve(routes)
