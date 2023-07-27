@@ -93,7 +93,9 @@ const rules = reactive({
 const showPassword = ref(false)
 const codeUrl = ref('')
 
-user.logout()
+if (user.token) {
+  user.logout()
+}
 
 // 获取图形验证码
 const handleGetImgCode = () => {

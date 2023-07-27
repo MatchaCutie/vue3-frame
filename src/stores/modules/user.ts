@@ -64,7 +64,7 @@ const userStore = defineStore('user', {
       })
     },
     getUserInfo() {
-      getInfo()
+      return getInfo()
         .then((res) => {
           res = res.data
           const user = res.user
@@ -85,15 +85,19 @@ const userStore = defineStore('user', {
           this.setAvatar(avatar)
           watermark.set(user.userName + ' ' + user.phonenumber.substr(7, 11))
         })
-        .catch(() => {})
+        .catch((error) => {
+          throw error
+        })
     },
     getRouters() {
-      return new Promise((resolve) => {
-        getRouters({ sysRequestUrl: `https://tebgateway.yijiesudai.com/systemui/index` }).then(
-          (res) => {
+      return new Promise((resolve, reject) => {
+        getRouters({ sysRequestUrl: `https://tebgateway.yijiesudai.com/systemui/index` })
+          .then((res) => {
             resolve(res.data)
-          }
-        )
+          })
+          .catch((error) => {
+            reject(error)
+          })
       })
     },
 
